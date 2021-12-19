@@ -53,5 +53,6 @@ runs:
         telegram_message: |
           ${{ inputs.owner }}
           ${{ env.msg_text }}
+        telegram_photo: ${{ inputs.name }}
         TELEGRAM_TOKEN: ${{ inputs.TELEGRAM_TOKEN }}
         TELEGRAM_TO: ${{ inputs.TELEGRAM_TO }}
