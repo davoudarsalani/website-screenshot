@@ -1,0 +1,36 @@
+name: TSETMC Screenshot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 */1 * *'  ## at 12:00 on every day-of-month
+
+jobs:
+  tsetmc-screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Assigning environment variables
+        shell: bash
+        run: |
+          echo "url=http://www.tsetmc.com" >> $GITHUB_ENV
+          echo "photo_name=tsetmc_screenshot.jpg" >> $GITHUB_ENV
+
+      - name: Taking screenshot
+        uses: ./.github/actions/capture-website-cli
+        with:
+          url: ${{ env.url }}
+          name: ${{ env.photo_name }}
+
+      - name: Notifying
+        uses: davoudarsalani/action-notify@master
+        with:
+          send_telegram_message: true
+          telegram_message: |
+            tsetmc screenshot
+            ${{ env.url }}
+          telegram_photo: ${{ env.photo_name }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}

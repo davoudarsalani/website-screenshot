@@ -1,0 +1,38 @@
+name: Website Screenshot
+
+inputs:
+  url:
+    required: true
+  width:
+    required: false
+    default: '1366'
+  delay:
+    required: false
+    default: '5'  ## seconds
+  name:
+    required: false
+    default: 'screenshot.png'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Installing capture-website-cli
+      shell: bash
+      run: npm install --global capture-website-cli >/dev/null
+
+    - name: Taking screenshot
+      shell: bash
+      run: capture-website ${{ inputs.url }} --delay=${{ inputs.delay }} --overwrite --output=${{ inputs.name }}
+           ## '--> more info: https://github.com/sindresorhus/capture-website-cli
+
+    - name: Screenshot info (before resize)
+      shell: bash
+      run: mediainfo ${{ inputs.name }}
+
+    - name: Resizing (setting width to ${{ inputs.width }})
+      shell: bash
+      run: convert ${{ inputs.name }} -resize ${{ inputs.width }} ${{ inputs.name }}
+
+    - name: Screenshot info (after resize)
+      shell: bash
+      run: mediainfo ${{ inputs.name }}
