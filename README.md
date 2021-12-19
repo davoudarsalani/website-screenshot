@@ -6,4 +6,6 @@
   with:
     url: ${{ env.url }}
     name: ${{ env.photo_name }}
+    TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+    TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
 ```
