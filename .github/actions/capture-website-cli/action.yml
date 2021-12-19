@@ -1,4 +1,4 @@
-name: Website Screenshot
+name: capture-website-cli
 
 inputs:
   url:
@@ -12,6 +12,15 @@ inputs:
   name:
     required: false
     default: 'screenshot.png'
+  notify:
+    required: false
+    default: true
+
+  ## secrets
+  TELEGRAM_TOKEN:
+    required: false
+  TELEGRAM_TO:
+    required: false
 
 runs:
   using: "composite"
@@ -36,3 +45,13 @@ runs:
     - name: Screenshot info (after resize)
       shell: bash
       run: mediainfo ${{ inputs.name }}
+
+    - name: Notifying
+      if: ${{ inputs.notify == 'true' }}
+      uses: davoudarsalani/action-notify@master
+      with:
+        telegram_message: |
+          ${{ inputs.owner }}
+          ${{ env.msg_text }}
+        TELEGRAM_TOKEN: ${{ inputs.TELEGRAM_TOKEN }}
+        TELEGRAM_TO: ${{ inputs.TELEGRAM_TO }}

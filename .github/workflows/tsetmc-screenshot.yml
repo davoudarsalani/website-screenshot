@@ -23,14 +23,5 @@ jobs:
         with:
           url: ${{ env.url }}
           name: ${{ env.photo_name }}
-
-      - name: Notifying
-        uses: davoudarsalani/action-notify@master
-        with:
-          send_telegram_message: true
-          telegram_message: |
-            tsetmc screenshot
-            ${{ env.url }}
-          telegram_photo: ${{ env.photo_name }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
