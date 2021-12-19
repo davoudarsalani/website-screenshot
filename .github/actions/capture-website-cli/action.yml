@@ -5,10 +5,10 @@ inputs:
     required: true
   width:
     required: false
-    default: '1366'
+    default: 1366
   delay:
     required: false
-    default: '5'  ## seconds
+    default: 5  ## seconds
   name:
     required: false
     default: 'screenshot.png'
