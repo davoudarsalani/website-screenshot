@@ -1,4 +1,4 @@
-name: TSETMC Screenshot
+name: tsetmc-com
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     - cron: '0 9 */1 * *'  ## at 09:00 on every day-of-month (being 12:30 for our timezone)
 
 jobs:
-  tsetmc-screenshot:
+  tsetmc-com:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
