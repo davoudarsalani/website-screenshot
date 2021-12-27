@@ -1,4 +1,9 @@
 # Take a screenshot of websites currently only using [capture-website-cli](https://github.com/sindresorhus/capture-website-cli)
+<div align='center'>
+<img alt='last-commit' src='https://img.shields.io/github/last-commit/davoudarsalani/freeDictionaryAPI?&labelColor=black&color=grey&style=flat'>
+<img alt='commit-activity' src='https://img.shields.io/github/commit-activity/m/davoudarsalani/freeDictionaryAPI?&labelColor=black&color=grey&style=flat'>
+</div>
+<br>
 
 ```yml
 - name: Taking screenshot
