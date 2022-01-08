@@ -52,5 +52,5 @@ runs:
       with:
         TELEGRAM_TOKEN: ${{ inputs.TELEGRAM_TOKEN }}
         TELEGRAM_TO: ${{ inputs.TELEGRAM_TO }}
-        telegram_message: 'Screenshot of ${{ inputs.url }}'
+        telegram_message: 'Screenshot of [${{ inputs.url }}](${{ inputs.url }})'
         telegram_photo: ${{ inputs.name }}
